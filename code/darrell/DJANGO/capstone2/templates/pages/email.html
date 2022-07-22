@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %} {% if email_msgs|length == 0 %}
+
+<h1>Email List</h1>
+<p class="big_btn">
+  <a href="email/">View email</a>
+</p>
+
+{% else %}
+
+<h1>You have {{email_msgs|length}} email messages</h1>
+
+<div id="emailDiv">
+    <ul id="emailULList">
+  
+      {% for x in email_msgs %}
+      <li><a href=""><div id="emailUL"><h2 id="claimNum">Claim Number: {{x.claimNum}}</h2><h3 id="Subject">{{x.emailSubject}}</h3>
+      <h4 id="From">From: {{x.emailFrom}}: {{x.emailFromAddress}}</h4><p>{{x.emailBody}}</p></div></a></li>
+      {% endfor %}
+    </ul>
+</div>
+
+{% endif %} {% endblock %}

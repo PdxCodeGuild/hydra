@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %} {% if claims|length == 0 %}
+
+<h1>Welcome to Ike's Capstone App!</h1>
+<p class="big_btn">
+  <a href="claims/">View claims</a>
+</p>
+
+{% else %}
+
+<h1>Search results: {{claims|length}} items</h1>
+<hr />
+{% for claim in claims %}
+<p class="description">
+  <a href="{%url 'see_details' claim.id %}">{{ claim.claim_number }}</a>
+</p>
+<div id="claim_info">
+  <p>Id: {{claim.id}}</p>
+  <p>Claim Number:{{claim.claim_number}}</p>
+  <p>Claimant: {{claim.claimant}}</p>
+
+  <hr />
+  {% endfor %} {% endif %} {% endblock %}
+</div>

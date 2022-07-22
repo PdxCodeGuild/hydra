@@ -1,0 +1,71 @@
+{% extends 'base.html' %} {% block content %} {% if claims|length == 0 %}
+
+<h1>Claims List</h1>
+<p class="big_btn">
+  <a href="claims/">View claims</a>
+</p>
+
+{% else %}
+
+<h1>You have {{claims|length}} active claims</h1>
+
+<div id="claims">
+  <table id="claimsTable" class="content-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="sm-td">Claim #</th>
+        <th class="md-td">Lit. Dates</th>
+        <th class="md-td">Claimant</th>
+        <th class="sm-td">COV LTR</th>
+        <th>DC ASGN?</th>
+        <th>COV LTR Sent Date</th>
+        <th class="DSLN">DSLN</th>
+        <th>FWP Date</th>
+        <th>In Suit?</th>
+        <th>Insured Facility</th>
+        <th>Insurer Policy</th>
+        <th>Last Note</th>
+        <th>Settlement Value</th>
+        <th>State</th>
+        <th>Action Required</th>
+        <th>Bulk Insured</th>
+        <th>Claim Type</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="firstTbody">
+      {% for claim in claims %}
+      <a href=""
+        ><tr>
+          <td><button name="" id="toggleBtn" class="toggleBtn">+</button></td>
+          <td>
+            <b><a href="">{{claim.claim_number}}</a></b>
+          </td>
+          <td>{{claim.lit_dates}}</td>
+          <td>{{claim.claimant}}</td>
+          <td>{{claim.coverage_letter}}</td>
+          <td>{{claim.dc_assigned}}</td>
+          <td>{{claim.date_coverage_letter_sent}}</td>
+          <td id="DSLN">{{claim.days_since_last_note}}</td>
+          <td>{{claim.follow_up_date}}</td>
+          <td>{{claim.in_suit}}</td>
+          <td>{{claim.insured_facility}}</td>
+          <td>{{claim.insurer_policy}}</td>
+          <td>{{claim.last_note_date}}</td>
+          <td>{{claim.settlement_value}}</td>
+          <td>{{claim.state}}</td>
+          <td>{{claim.action_required}}</td>
+          <td>{{claim.bulk_insured}}</td>
+          <td>{{claim.claim_type}}</td>
+          <td><a href="">Edit</a></td>
+          <td><a href="">Delete</a></td>
+        </tr></a
+      >
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endif %} {% endblock %}
