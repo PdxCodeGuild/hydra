@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container text-center">
+    <h1>Journal Entry</h1>
+    <form action="{% url 'journal_app:add_entry' %}" method="post" name="entryForm">{% csrf_token %}
+        <div class="marg-top journal">
+            <div>
+                <label>Symbol:</label>
+                <input type="text" name="symbol" size="12" value="{{journalEntry.symbol}}">
+            </div>
+            <br>
+            <div>
+                <label>Date: {{journalEntry.date}}</label>
+                <input type="date" id="date" name="date" min="2000-01-01" max="2024-12-31"
+                    placeholder="{{journalEntry.date}}">
+            </div>
+            <br>
+            <div>
+                <label>Win</label>
+                <input type="radio" id="win" name="result" value=1>
+                <label>Lose</label>
+                <input type="radio" id="lose" name="result" value=-1>
+                <label>Breakeven</label>
+                <input type="radio" id="breakeven" name="result" value=0>
+            </div>
+            <br>
+            <div>
+                <label>Image:</label>
+                <input type="text" name="img_link" placeholder="Image link here.">
+            </div>
+            <br>
+            <div>
+                <label>Details:</label>
+                <input type="text" name="detail" placeholder="Trade notes here.">
+            </div>
+            <br>
+            <div>
+                <input type="submit" value="Submit"><a href="{% url 'journal_app:listing' %}" class="btn">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

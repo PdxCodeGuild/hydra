@@ -1,0 +1,73 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container marg-bot">
+    <div class="text-center"><h1>{{request.user}} Journal</h1></div>
+    {% for item in user_post reversed %}
+    <!-- winner -->
+    {% if item.result == 1 %}
+        <div class="win">
+            <div>id {{item.id}}</div>
+            <div>Symbol: {{item.symbol}}</div>
+            <div>Date: {{item.date}}</div>
+            <div>Result: 
+                <!-- output win/loss/breakeven instead of numerical value -->
+                {% if item.result == 1 %}
+                    Win
+                {% elif item.result == -1 %}
+                    Lose
+                {% else %}
+                    Breakeven
+                {% endif %}
+            </div>
+            <div>Details: {{item.detail}}</div>
+            <div class="text-center"><a href="{{item.img_link}}"  target="_blank"><img class="img-thumbnail" src="{{item.img_link}}" placeholder="img here"></a></div>
+            <a href="{% url 'journal_app:edit' item.id %}">Update</a>
+            <a href="{% url 'journal_app:delete' item.id %}">Delete</a>
+        </div>
+        <!-- loser -->
+    {% elif item.result == -1 %}
+        <div class="lose">
+            <div>Symbol: {{item.symbol}}</div>
+            <div>Date: {{item.date}}</div>
+            <div>Result: 
+                <!-- output win/loss/breakeven instead of numerical value -->
+                {% if item.result == 1 %}
+                    Win
+                {% elif item.result == -1 %}
+                    Lose
+                {% else %}
+                    Breakeven
+                {% endif %}
+            </div>
+            <div>Details: {{item.detail}}</div>
+            <div class="text-center"><a href="{{item.img_link}}"  target="_blank"><img class="img-thumbnail" src="{{item.img_link}}" placeholder="img here"></a></div>
+            <a href="{% url 'journal_app:edit' item.id %}">Update</a>
+            <a href="{% url 'journal_app:delete' item.id %}">Delete</a>
+        </div>
+    {% else %}
+        <!-- breakeven -->
+        <div class="breakeven">
+            <div>Symbol: {{item.symbol}}</div>
+            <div>Date: {{item.date}}</div>
+            <div>Result: 
+                <!-- output win/loss/breakeven instead of numerical value -->
+                {% if item.result == 1 %}
+                    Win
+                {% elif item.result == -1 %}
+                    Lose
+                {% else %}
+                    Breakeven
+                {% endif %}
+            </div>
+            <div>Details: {{item.detail}}</div>
+            <div class="text-center"><a href="{{item.img_link}}"  target="_blank"><img class="img-thumbnail" src="{{item.img_link}}" placeholder="img here"></a></div>
+            <a href="{% url 'journal_app:edit' item.id %}">Update</a>
+            <a href="{% url 'journal_app:delete' item.id %}">Delete</a>
+        </div>
+    {% endif %}
+    <!-- edit cancel -->
+{% endfor %}
+</div>
+{% endblock %}
+
+

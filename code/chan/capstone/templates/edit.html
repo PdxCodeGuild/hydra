@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container text-center">
+    <h1>Edit Trade {{entry_item.id}}</h1>
+    <form action="{% url 'journal_app:save' entry_item.id %}" method="post" name="saveForm">{% csrf_token %}
+        <div class="marg-top">
+            <div>
+                <label>Symbol: </label>
+                <input type="text" name="symbol" size="12" value="{{entry_item.symbol}}" placeholder="{{entry_item.symbol}}">
+            </div>
+            <br>
+            <div>
+                <label>Date: {{entry_item.date}}</label>
+                <input type="date" id="date" name="date" min="2000-01-01" max="2024-12-31"placeholder="{{entry_item.date}}" value="{{entry_item.date}}">
+            </div>
+            <br>
+            <div>
+                <!-- need if conditions here to select whichever is checked -->
+                {% if entry_item.result == 1 %}
+                <label>Win</label>
+                <input type="radio" id="win" name="result" value=  1 checked='true'>
+                <label>Lose</label>
+                <input type="radio" id="lose" name="result" value= -1>
+                <label>Breakeven</label>
+                <input type="radio" id="breakeven" name="result" value= 0>
+                {% elif entry_item.result == -1%}
+                <label>Win</label>
+                <input type="radio" id="win" name="result" value=  1>
+                <label>Lose</label>
+                <input type="radio" id="lose" name="result" value= -1 checked="true">
+                <label>Breakeven</label>
+                <input type="radio" id="breakeven" name="result" value= 0>
+                {% else%}
+                <label>Win</label>
+                <input type="radio" id="win" name="result" value=  1>
+                <label>Lose</label>
+                <input type="radio" id="lose" name="result" value= -1 checked="true">
+                <label>Breakeven</label>
+                <input type="radio" id="breakeven" name="result" value= 0>
+                {% endif %}
+            </div>
+            <br>
+            <div>
+                <label>Details:</label>
+                <input type="text" name="detail" size="41" placeholder="Trade notes here." value="{{entry_item.detail}}">
+            </div>
+            <br>
+            <div>
+                <label>Image:</label>
+                <input type="text" name="img_link" size="41" placeholder="img link here" value="{{entry_item.img_link}}">
+            </div>
+            <br>
+            <div>
+                <input type="submit" value="Update"><a href="{% url 'journal_app:listing' %}" class="cancel-btn">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

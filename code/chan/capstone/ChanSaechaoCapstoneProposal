@@ -1,0 +1,39 @@
+# Chan Saechao
+
+## Project Name
+
+Trading journal App
+
+## Project Overview
+
+This is a trading joural app that will log your journal win, loss and break even.  The app will display each journal entry in green for wins, red for losses, and gray for break even.  It will also let you store notes for each particular trade and then outputs the wins and losses onto a graph.  It will also output an api for forex to see the prices of each symbol chosen.
+
+#### Pages
+
+- Home - Picture and login
+- Journal Entry - Journal Entry Form and Chart
+- Journal History - List of journal entries
+- Edit - Page to Delete and Edit entries
+
+## Functionality
+
+The User would land on a Django form after logging in which will have a form.  The form will allow a user to select the trade outcome of win, loss and breakeven.  There will be a counter for each trade entry for wins and losses to display onto a graph. It also allows a user To input the Time entry of the trade and the day the trade was taken.  Along with a text box for note taking about the trade and then an input box for an image url to display an image for each journal entry. Lastly it will have a counter based on win lost condition for a graph.
+
+## Data Model
+
+1. User - charfield user input
+2. Password - charfield password input
+3. Symbol - The Forex currency pair, commodity or index
+4. Win/loss/breakeven - charfield 3 option Win or loss, green for win and red for loss and gray for break even
+5. Win counter - for chart to display win amount
+6. Loss counter - for char to display loss amount
+7. Detail - charfield for trade description notes
+8. IMG link - urlfield - displays an image of given url of chart
+9. Date - datefield - date trade was taken
+
+## Schedule
+
+- 07012022 Submit Capstone Proposal
+- 07052022 - 07092022 Set up Django, views, templates, HTML, CSS, JS etc.
+- 07102022 - 07162022 Create models and forms for User, Password, Details, Win/Loss, Url
+- 07172022 - 07232022 Create graph and use the rest of the week to get everything working if it's not alreadiy working correctly.

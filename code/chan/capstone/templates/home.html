@@ -1,0 +1,78 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container text-center">
+    {% if not user.is_authenticated %}
+    <div>
+        <h1>Welcome to Trading Journal</h1>
+    </div>
+    <div class="container">
+        <img class="img-fluid"
+            src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202107/stockvault-bull-versus-bear-fi_1200x768.jpeg?vIsSSRI_zHNqYDVQIklAIe1GsHB5cTAr&size=770:433"
+            alt="market">
+    </div>
+    {% endif %}
+    {% if user.is_authenticated %}
+    <h3>Hello {{request.user}}</h3>
+    <h4>You're sucessfully logged in.</h4>
+
+    <div class="container marg-top">
+        <img class="img-fluid"
+            src="https://akm-img-a-in.tosshub.com/indiatoday/images/story/202107/stockvault-bull-versus-bear-fi_1200x768.jpeg?vIsSSRI_zHNqYDVQIklAIe1GsHB5cTAr&size=770:433"
+            alt="market">
+    </div>
+
+    <!-- chart start -->
+
+    <!-- chart div -->
+    <div class="container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- create the chart -->
+    <script>
+        const labels = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [0, 10, 5, 2, 20, 30, 45],
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+    </script>
+
+    <!-- render the chart -->
+    <script>
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
+    <!-- chart end -->
+</div>
+
+{% else %}
+<div class="container marg-top"></div>
+<button type="submit"><a href="{% url 'journal_app:signup' %}">Sign Up</a></button>
+<button type="submit"><a href="{% url 'journal_app:signin' %}">Sign In</a></button>
+</div>
+{% endif %}
+
+
+<!-- add chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
