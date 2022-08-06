@@ -60,3 +60,4 @@ while (index < messageArray.length){
 }
 
 console.log(baseArray.join(''));
+// hello there

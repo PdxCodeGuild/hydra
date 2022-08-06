@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Welcome to Shane's to do list!
+<br>^_^<a href="{% url 'add' %}"><button type="button"   class="btn btn-success">Add an Item</button></a>^_^</h1>
+<br><hr>
+
+<table class="table table-striped table-hover">
+        <tr>
+            <th>Date Entered</th>
+            <th>Description</th>
+            <th>Completed Date</th>
+            <th>Delete</th>
+        </tr>
+        {%for item in Items%}
+        <tr>
+            <th>{{item.created_date}}</th>
+            <th>{{item.description}}</th>
+            <th>{% if item.completed_boolean %}
+                {{item.completed_date}}
+                {% else %}
+                <form action="{% url 'complete' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{item.id}}">
+                <button type="submit" class="btn btn-success">Completed</button>
+                </form>
+                {% endif %}
+            </th>
+
+
+            <th>
+                <form action="{% url 'delete' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{item.id}}">
+                <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </th>
+        </tr>
+        {%endfor%}
+                
+    </table>
+
+{% endblock %}

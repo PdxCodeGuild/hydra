@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+      <b>{{data.name}}</b>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Temp: {{data.main.temp}}</li>
+      <li class="list-group-item">Max Temp: {{data.main.temp_max}}</li>
+      <li class="list-group-item">Weather: {{data.weather[0].description}}</li>
+    </ul>
+  </div>
+
+{% endblock %}
+
+

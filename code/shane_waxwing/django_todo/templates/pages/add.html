@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block content %}
+<h1>^_^ Add an Item to the list ^_^</h1>
+
+<br>
+<hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">New List Item</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Remember to keep goals attainable by being realistic. Remember time
+      constraints.</h6>
+    <p class="card-text">
+    <div class="mb-3">
+      <form action="{% url 'add' %}" method="POST">
+      {% csrf_token %}
+      <label for="exampleFormControlInput1" class="form-label">What do you gotta do?</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Get something done" name="description">
+
+      <button type="submit" class="btn btn-success">I will get this done!</button>
+      </form>
+    </div>
+    </p>
+  </div>
+</div>
+{% endblock %}

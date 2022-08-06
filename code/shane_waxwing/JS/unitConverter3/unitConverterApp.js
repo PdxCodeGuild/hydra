@@ -17,3 +17,5 @@ const to = prompt('What unit are we converting to? ft / mi / m / km / yd / in')
 const result = (distance * toMeters[from]) / toMeters[to]
 
 console.log(alert(`${distance} ${from} is equal to ${result} ${to}.`))
+
+// ...bruh

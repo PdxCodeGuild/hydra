@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+
+
+<form method="POST" action="weather">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Select a City</h5>
+      <p class="card-text"><select name="city" class="form-select" aria-label="Default select example">
+        <option selected>Open this select menu</option>
+        <option value="pocono">Pocono Summit, PA</option>
+        <option value="washington">Washington, NJ</option>
+        <option value="cary">Cary, NC</option>
+      </select></p>
+      <button type="submit" class="btn btn-outline-success">^_^ Submit ^_^</button>
+    </div>
+  </div>
+
+</form>
+
+
+
+
+{% endblock %}
